@@ -1,0 +1,15 @@
+const router=require('express').Router()
+const {paidWithdraw,addNewWithDraw,getWithDraw,userWithDraw,singleUserWithDraw,deleteWithDraw,getActiveOrder, getPaidOrder}=require('../controller/withdrawController')
+const authentication =require('../auth/authentication')
+
+router.post('/',authentication,addNewWithDraw)
+router.get('/',authentication,getActiveOrder)
+
+router.get('/p',authentication,getPaidOrder)
+router.post('/p/:wId',authentication,paidWithdraw)
+
+router.get('/:id',authentication,singleUserWithDraw)
+router.get('/u/single',authentication,userWithDraw)
+router.delete('/:withdrawId',authentication,deleteWithDraw)
+
+module.exports=router;
